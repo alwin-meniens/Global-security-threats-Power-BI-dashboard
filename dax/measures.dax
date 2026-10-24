@@ -1,0 +1,79 @@
+/* ==============================================================================
+   CyberRisk Intelligence — Global Cybersecurity Threats (2015–2024)
+   DAX Measures & Implementation Notes
+   Author: Alwin Meniens
+   ============================================================================== */
+
+// -----------------------------------------------------------------------------
+// Measure 1: Total Financial Impact
+// Visual usage: KPI Card, Line Chart Y-axis, Country Bar Chart X/Y, Industry Bar Chart
+// Column in dataset: 'Financial Loss (in Million $)'
+// Note: Each record represents an incident whose financial loss is in millions of USD ($M).
+// The sum across all 3,000 recorded incidents is ~151,478.91 (i.e. ~$151.48 Billion).
+// In Power BI, this is displayed with 'K' units on the KPI card ($151.48K M = $151.48B).
+// -----------------------------------------------------------------------------
+Total Financial Impact = 
+SUM('Global_Cybersecurity_Threats_2015-2024'[Financial Loss (in Million $)])
+
+
+// -----------------------------------------------------------------------------
+// Measure 2: Total Cybersecurity Incidents
+// Visual usage: KPI Card (Top-Left)
+// Represents the total count of reported threat events in the filtered context.
+// Total dataset records: 3,000 incidents (displayed as '3K' on the KPI card).
+// -----------------------------------------------------------------------------
+Total Cybersecurity Incidents = 
+COUNTROWS('Global_Cybersecurity_Threats_2015-2024')
+
+
+// -----------------------------------------------------------------------------
+// Measure 3: Average Response Time
+// Visual usage: KPI Card (Top-Right)
+// Column in dataset: 'Incident Resolution Time (in Hours)'
+// Model/Formula mapping note:
+// In the Kaggle dataset, the underlying column is named 'Incident Resolution Time (in Hours)'.
+// If renamed during Power Query ETL to 'Response Time (Hours)', use that column name.
+// Both variations are documented below for complete implementation transparency.
+// -----------------------------------------------------------------------------
+// Variant A (Direct Dataset Column):
+Average Response Time = 
+AVERAGE('Global_Cybersecurity_Threats_2015-2024'[Incident Resolution Time (in Hours)])
+
+// Variant B (If column was renamed to 'Response Time (Hours)' in Power Query):
+// Average Response Time = 
+// AVERAGE('Global_Cybersecurity_Threats_2015-2024'[Response Time (Hours)])
+
+
+// -----------------------------------------------------------------------------
+// Measure 4: Total Data Breached (Model vs. Underlying Dataset Column Mapping)
+// Visual usage: KPI Card (Second from Left, displaying '2bn')
+// Verification finding:
+// In the Kaggle dataset 'Global_Cybersecurity_Threats_2015-2024.csv', the column tracking
+// breach magnitude is 'Number of Affected Users' (sum = 1,514,052,409 ~ 1.51 Billion ~ '2bn' rounded).
+// Some variations of cybersecurity schemas refer to 'Data Breached (GB)'.
+// If the measure was created over 'Data Breached (GB)':
+// -----------------------------------------------------------------------------
+// Primary formula documented in model specifications:
+Total Data Breached = 
+SUM('Global_Cybersecurity_Threats_2015-2024'[Data Breached (GB)])
+
+// Underlying dataset equivalent (aggregating affected users):
+// Total Data Breached = 
+// SUM('Global_Cybersecurity_Threats_2015-2024'[Number of Affected Users])
+
+
+// ==============================================================================
+// Additional Recommended Business Intelligence Measures (for Extended Analytics)
+// ==============================================================================
+
+// Financial Impact in Billions of USD (normalized for executive reporting):
+Financial Impact ($Bn) = 
+DIVIDE([Total Financial Impact], 1000, 0)
+
+// Average Financial Loss per Incident ($M):
+Average Loss per Incident ($M) = 
+DIVIDE([Total Financial Impact], [Total Cybersecurity Incidents], 0)
+
+// Average Affected Users per Incident:
+Average Affected Users per Incident = 
+AVERAGE('Global_Cybersecurity_Threats_2015-2024'[Number of Affected Users])

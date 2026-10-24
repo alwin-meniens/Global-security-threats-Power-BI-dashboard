@@ -1,0 +1,29 @@
+# Operating System Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Temporary & Cache Files
+*.tmp
+*.temp
+*~
+*.log
+*.bak
+
+# Power BI Temporary Auto-Recovery & Backup Files
+~$*.pbix
+*.pbix.bak
+*.pbit.bak
+
+# IDE & Editor Configurations
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python / Local Analysis Scratch
+__pycache__/
+*.pyc
+scratch/
