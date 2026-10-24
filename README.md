@@ -1,8 +1,17 @@
 # CyberRisk Intelligence | Power BI Dashboard
 
-This project is a Power BI dashboard that explores cybersecurity incidents, financial losses, attack patterns, and response times across countries and industries. It was developed as an educational and exploratory business intelligence exercise to practice data analysis, DAX measures, and dashboard storytelling.
+[![Power BI](https://img.shields.io/badge/Power_BI-Desktop-F2C811?logo=powerbi&logoColor=black)](https://powerbi.microsoft.com/)
+[![Dataset: Kaggle](https://img.shields.io/badge/Dataset-Kaggle-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/datasets/atharvasoundankar/global-cybersecurity-threats)
+[![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
+
+This project is a Power BI dashboard that explores cybersecurity incidents, financial losses, attack patterns, and response times across countries and industries. It was built as an educational business intelligence project to analyse trends in a structured cyber incident dataset.
 
 ![Dashboard Preview](dashboard/cyberrisk-dashboard.png)
+
+## Quick Links
+- 📊 [Dashboard Screenshot](dashboard/cyberrisk-dashboard.png)
+- 📐 [DAX Measures](dax/measures.dax)
+- 💾 [Power BI File](cyberrisk-intelligence-dashboard.pbix)
 
 ## Tools Used
 - Microsoft Power BI Desktop
