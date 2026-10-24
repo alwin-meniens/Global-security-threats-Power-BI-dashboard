@@ -165,5 +165,3 @@ You can inspect the dashboard screenshot directly in [`dashboard/cyberrisk-dashb
 ## 👤 Author
 
 **Alwin Meniens**  
-*B.Com Finance Student | Aspiring ACCA Professional & Business Intelligence Analyst*  
-- Focus: Financial Analysis, Enterprise Risk Management, Business Intelligence, Data Analytics with Power BI & Python.
