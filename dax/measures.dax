@@ -1,66 +1,37 @@
-/* ==============================================================================
-   CyberRisk Intelligence — Global Cybersecurity Threats (2015–2024)
-   DAX Measures (Final Refined Version)
-   Purpose:
-   - Standardized naming
-   - Cleaner structure
-   - Safer calculations with DIVIDE
-   - Easier maintenance when columns are renamed in Power Query
-   ==============================================================================
-*/
-
-// -----------------------------------------------------------------------------
-// 1) Core KPI Measures
-// -----------------------------------------------------------------------------
+// CyberRisk Intelligence | Global Cybersecurity Threats (2015–2024)
 
 Total Financial Impact =
-SUM ( 'Global_Cybersecurity_Threats_2015-2024'[Financial Loss (in Million $)] )
+SUM('Global_Cybersecurity_Threats_2015-2024'[Financial Loss (in Million $)])
 
 Total Cybersecurity Incidents =
-COUNTROWS ( 'Global_Cybersecurity_Threats_2015-2024' )
+COUNTROWS('Global_Cybersecurity_Threats_2015-2024')
 
 Average Response Time (Hours) =
-AVERAGE ( 'Global_Cybersecurity_Threats_2015-2024'[Incident Resolution Time (in Hours)] )
-
-// Alternate version if the column was renamed in Power Query:
-// Average Response Time (Hours) =
-// AVERAGE ( 'Global_Cybersecurity_Threats_2015-2024'[Response Time (Hours)] )
-
-// -----------------------------------------------------------------------------
-// 2) Data Exposure Metrics
-// -----------------------------------------------------------------------------
+AVERAGE('Global_Cybersecurity_Threats_2015-2024'[Incident Resolution Time (in Hours)])
 
 Total Affected Users =
-SUM ( 'Global_Cybersecurity_Threats_2015-2024'[Number of Affected Users] )
+SUM('Global_Cybersecurity_Threats_2015-2024'[Number of Affected Users])
 
 Total Data Breached (GB) =
-SUM ( 'Global_Cybersecurity_Threats_2015-2024'[Data Breached (GB)] )
-
-// If your data model stores affected volume as user counts instead of GB, use:
-// Total Data Breached (GB) =
-// DIVIDE ( SUM ( 'Global_Cybersecurity_Threats_2015-2024'[Number of Affected Users] ), 1, 0 )
-
-// -----------------------------------------------------------------------------
-// 3) Business Analytics / Ratios
-// -----------------------------------------------------------------------------
+SUM('Global_Cybersecurity_Threats_2015-2024'[Data Breached (GB)])
 
 Financial Impact ($Bn) =
-DIVIDE ( [Total Financial Impact], 1000, 0 )
+DIVIDE([Total Financial Impact], 1000, 0)
 
 Average Loss per Incident ($M) =
-DIVIDE ( [Total Financial Impact], [Total Cybersecurity Incidents], 0 )
+DIVIDE([Total Financial Impact], [Total Cybersecurity Incidents], 0)
 
 Average Affected Users per Incident =
-DIVIDE ( [Total Affected Users], [Total Cybersecurity Incidents], 0 )
+DIVIDE([Total Affected Users], [Total Cybersecurity Incidents], 0)
 
-// -----------------------------------------------------------------------------
-// 4) Optional Alias Measures for Visual Clarity
-// -----------------------------------------------------------------------------
+Total Financial Impact (USD M) =
+[Total Financial Impact]
 
-Total Financial Impact (USD M) = [Total Financial Impact]
+Total Financial Impact (USD Bn) =
+[Financial Impact ($Bn)]
 
-Total Financial Impact (USD Bn) = [Financial Impact ($Bn)]
+Average Resolution Time (Hours) =
+[Average Response Time (Hours)]
 
-Average Resolution Time (Hours) = [Average Response Time (Hours)]
-
-Total Breached Users = [Total Affected Users]
+Total Breached Users =
+[Total Affected Users]
